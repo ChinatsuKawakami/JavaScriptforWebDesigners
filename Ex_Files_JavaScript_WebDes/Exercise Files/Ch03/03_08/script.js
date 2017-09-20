@@ -1,3 +1,8 @@
+
+// Edit Date: 2017-09-20
+// Editor : Chinatsu Kawakami
+//version 0.0.6 add values in estimateTotal function.
+
 (function() {
 "use strict";
 
@@ -29,6 +34,15 @@ function estimateTotal(event) {
 		
 		state.focus();
 	}
+
+	var itemBball = document.getElementById('txt-q-bball').value,
+	itemJersey= document.getElementById('txt-q-jersey').value,
+    itemPower = document.getElementById('txt-q-power').value,
+    shippingState = state.value,
+    shippingMethod=document.querySelector('[name=r_method]:checked').value;
+
+    console.log(itemBball,itemJersey,itemPower,shippingState,shippingMethod);
+
 }
 
 })();
