@@ -1,3 +1,7 @@
+// Edit Date: 2017-09-21
+// Editor : Chinatsu Kawakami
+//version 0.0.8 add the function to show total cost
+
 (function() {
 "use strict";
 
@@ -30,11 +34,11 @@ function estimateTotal(event) {
 		state.focus();
 	}
 	
-	var itemBball = document.getElementById('txt-q-bball').value,
-		itemJersey = document.getElementById('txt-q-jersey').value,
-		itemPower = document.getElementById('txt-q-power').value,
+	var itemBball = parseInt(document.getElementById('txt-q-bball').value,10) || 0,
+		itemJersey = parseInt(document.getElementById('txt-q-jersey').value,10) || 0,
+		itemPower = parseInt(document.getElementById('txt-q-power').value,10)|| 0,
 		shippingState = state.value,
-		shippingMethod = document.querySelector('[name=r_method]:checked').value;
+		shippingMethod = document.querySelector('[name=r_method]:checked').value ||"";
 		
 	var totalQty = itemBball + itemJersey + itemPower,
 		shippingCostPer,
@@ -61,7 +65,7 @@ function estimateTotal(event) {
 	
 	shippingCost = shippingCostPer * totalQty;
 		
-	estimate = (totalItemPrice * taxFactor) + shippingCost;
+	estimate = '$'+ ((totalItemPrice * taxFactor) + shippingCost).toFixed(2);
 	
 	document.getElementById('txt-estimate').value = estimate;
 }
