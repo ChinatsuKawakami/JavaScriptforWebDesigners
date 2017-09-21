@@ -1,6 +1,6 @@
 // Edit Date: 2017-09-21
 // Editor : Chinatsu Kawakami
-//version 0.0.8 add the function to show total cost
+//version 0.0.8 edit the function to parse to integer from string.
 
 (function() {
 "use strict";

@@ -1,3 +1,7 @@
+// Edit Date: 2017-09-21
+// Editor : Chinatsu Kawakami
+//version 0.1.0 edit the function to show the result.
+
 (function() {
 "use strict";
 
@@ -61,9 +65,15 @@ function estimateTotal(event) {
 	
 	shippingCost = shippingCostPer * totalQty;
 		
-	estimate = '$' + ((totalItemPrice * taxFactor) + shippingCost).toFixed(2);
+	estimate ='$'+ ((totalItemPrice * taxFactor) + shippingCost).toFixed(2);
 	
 	document.getElementById('txt-estimate').value = estimate;
+
+	var results = document.getElementById('results');
+
+	results.innerHTML='Total Item: '+ totalQty+'<br>';
+	results.innerHTML+='Total shipping: $: '+ shippingCost.toFixed(2)+'<br>';
+	results.innerHTML+='Tax:  '+ ((taxFactor-1) * 100).toFixed(2) + '% ('+shippingState+')';//7.25
 }
 
 })();
