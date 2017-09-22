@@ -1,16 +1,22 @@
+// Edit Date: 2017-09-22
+// Editor : Chinatsu Kawakami
+//version 0.1.7 challenge add the date in function to show the time.
 (function(){
 'use strict';
 
 document.addEventListener('DOMContentLoaded', function(){
-	var c = document.getElementById('current-time');
-	
-	setInterval(updateTime, 1000);
-	
-	function updateTime() {
+	var currentTime = document.getElementById('current-time');
+	var currentDate = document.getElementById('current-date');
+    
+	setInterval(function() {
+		
 		var d = new Date();
-	
 		var hours = d.getHours(),
 			minutes = d.getMinutes(),
+			month = formatMonth(d.getMonth()),//0-11
+			date = d.getDate(),
+			//month = parseInt(d.getMounth),
+		    //dateClass = d.GetMonthName(month),
 			ampm = 'AM';
 			
 		if (hours > 12) {
@@ -26,10 +32,30 @@ document.addEventListener('DOMContentLoaded', function(){
 		
 		var sepClass = '';
 		if (d.getSeconds() % 2 === 1) sepClass = 'trans';
-		
+ 		
 		var sep = '<span class="' + sepClass + '">:</span>';
+	    // date ='<span class="'+ dateClass+ d.getDate()+'"></span>';
+		currentTime.innerHTML = hours + sep + minutes + ' ' + ampm;
+		currentDate.textContent = month+' '+date;
+	},1000);
+
+
+function formatMonth(m) {
+		m = parseInt(m, 10);
 	
-		c.innerHTML = hours + sep + minutes + ' ' + ampm;
+		if (m < 0) {
+			m = 0;
+		} else if (m > 11) {
+			m = 11;
+		}
+		
+		var monthNames = [
+			'January', 'February', 'March',
+			'April', 'May', 'June', 
+			'July', 'August', 'September',
+			'October', 'November', 'December'
+		];
+		return monthNames[m];
 	}
 });
 
